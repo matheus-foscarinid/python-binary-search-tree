@@ -1,10 +1,17 @@
 from BinarySearchTreeADT import BinarySearchTreeADT
 
 class Node:
-  def __init__(self, key):
+  def __init__(self, key: object, value: object) -> None:
     self.key = key
-    self.left = None
-    self.right = None
+    self.value = value
+    self.left: Node = None
+    self.right: Node = None
+
+  def __str__(self) -> str:
+    return str(self.key)
+
+  def next(self, other_key: object) -> Node:
+    return self.left if other_key < self.key else self.right
 
 class LinkedBinarySearchTree(BinarySearchTreeADT):
   def count_internal(self) -> int:
