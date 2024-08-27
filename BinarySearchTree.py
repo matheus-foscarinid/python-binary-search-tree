@@ -1,10 +1,10 @@
 from BinarySearchTreeADT import BinarySearchTreeADT
 
 class Node:
-    def __init__(self, key):
-        self.key = key
-        self.left = None
-        self.right = None
+  def __init__(self, key):
+    self.key = key
+    self.left = None
+    self.right = None
 
 class LinkedBinarySearchTree(BinarySearchTreeADT):
   def count_internal(self) -> int:
@@ -19,7 +19,7 @@ class LinkedBinarySearchTree(BinarySearchTreeADT):
     # return the sum of the left and right counts
     return left_count + right_count
 
-  def _count_internal(self, node: object) -> int:
+  def _count_internal(self, node: Node) -> int:
     # if the node is None, return 0
     if node is None:
       return 0
@@ -35,7 +35,7 @@ class LinkedBinarySearchTree(BinarySearchTreeADT):
     # plus the left and right counts
     return 1 + left_count + right_count
 
-  def degree(self, key: object) -> int: ...
-  def height(self, key: object) -> int: ...
-  def level(self, key: object) -> int: ...
-  def ancestor(self, key: object) -> str: ...
+  def degree(self, key: Node) -> int: ...
+  def height(self, key: Node) -> int: ...
+  def level(self, key: Node) -> int: ...
+  def ancestor(self, key: Node) -> str: ...
