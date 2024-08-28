@@ -13,10 +13,10 @@ class Node:
   def next(self, other_key: object) -> Node:
     return self.left if other_key < self.key else self.right
 
-class LinkedBinarySearchTree(BinarySearchTreeADT):
+class BinarySearchTree(BinarySearchTreeADT):
   def __init__(self) -> None:
     self._root: Node = None
-  
+
   def count_internal(self) -> int:
     def count_internal(self, node: Node) -> int:
       # if the node is None, return 0
