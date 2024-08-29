@@ -30,7 +30,7 @@ class BinarySearchTree(BinarySearchTreeADT):
     self._root = insert(self._root, key, value)
 
   def count_internal(self) -> int:
-    def count_internal(self, node: Node) -> int:
+    def count_internal(node: Node) -> int:
       # if the node is None, return 0
       if node is None:
         return 0
@@ -71,3 +71,8 @@ if __name__ == "__main__":
     bst.insert(15, 15)
     bst.insert(2, 2)
     bst.insert(7, 7)
+    bst.insert(20, 20)
+    bst.insert(19, 19)
+    bst.insert(21, 21)
+
+    print(bst.count_internal())
