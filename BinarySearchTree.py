@@ -62,3 +62,12 @@ class BinarySearchTree(BinarySearchTreeADT):
   def height(self, key: Node) -> int: ...
   def level(self, key: Node) -> int: ...
   def ancestor(self, key: Node) -> str: ...
+
+if __name__ == "__main__":
+    # creating a simple BST, usefull for testing :)
+    bst = BinarySearchTree()
+    bst.insert(10, 10)
+    bst.insert(5, 5)
+    bst.insert(15, 15)
+    bst.insert(2, 2)
+    bst.insert(7, 7)
