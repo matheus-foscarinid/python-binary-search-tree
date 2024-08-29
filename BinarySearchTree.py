@@ -17,6 +17,18 @@ class BinarySearchTree(BinarySearchTreeADT):
   def __init__(self) -> None:
     self._root: Node = None
 
+  def insert(self, key: object, value: object) -> None:
+    def insert(current: Node, key: object, value: object) -> Node:
+      if current is None:
+        return Node(key, value)
+      elif key > current.key:
+        current.right = insert(current.right, key, value)
+      elif key < current.key:
+        current.left = insert(current.left, key, value)
+      return current
+
+    self._root = insert(self._root, key, value)
+
   def count_internal(self) -> int:
     def count_internal(self, node: Node) -> int:
       # if the node is None, return 0
@@ -39,7 +51,7 @@ class BinarySearchTree(BinarySearchTreeADT):
     if self._root is None or (self._root.left is None and self._root.right is None):
       return 0
 
-    left_count = count_internal(_root.left)
+    left_count = count_internal(self._root.left)
     right_count = count_internal(self._root.right)
 
     # return the sum of the left and right counts
