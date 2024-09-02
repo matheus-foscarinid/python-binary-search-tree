@@ -110,6 +110,24 @@ class BinarySearchTree(BinarySearchTreeADT):
     # then return the height of the node using the private helper function
     return height(node)
 
+  def level(self, key: object) -> int:
+    def level(key: object, node: Node, curr_level: int) -> int:
+      # if there's no node to search, return -1
+      if node is None:
+        return -1
+
+      # if the key is equal, the node is found, return the current level 
+      if node.key == key:
+        return curr_level
+
+      # search the left and right subtrees adding 1 to the current level
+      left_level = level(key, node.left, curr_level + 1)
+      right_level = level(key, node.right, curr_level + 1)
+
+      return max(left_level, right_level)
+
+    return level(key, self._root, 0)
+
 if __name__ == "__main__":
     # creating a simple BST, usefull for testing :)
     bst = BinarySearchTree()
