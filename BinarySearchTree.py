@@ -1,3 +1,6 @@
+# Grupo 3
+# Nomes: Matheus Foscarini Dias, Enzo Boadas e Mirágini Victória Silveira Malgarizi
+
 from BinarySearchTreeADT import BinarySearchTreeADT
 
 class Node:
@@ -13,8 +16,6 @@ class Node:
   def next(self, other_key: object) -> 'Node':
     return self.left if other_key < self.key else self.right
 
-# Grupo 3
-# Nomes: Matheus Foscarini Dias, Enzo Boadas e Mirágini Victória Silveira Malgarizi
 class BinarySearchTree(BinarySearchTreeADT):
   def __init__(self) -> None:
     self._root: Node = None
