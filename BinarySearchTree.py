@@ -29,6 +29,18 @@ class BinarySearchTree(BinarySearchTreeADT):
 
     self._root = insert(self._root, key, value)
 
+  def __find_node(self, node: Node, key: object) -> Node:
+    if node is None or node.key == key:
+      return node
+    # if the key is less than the node's key, search the left subtree
+    # because the left subtree contains the keys that are smaller
+    if node.key > key:
+      return self.__find_node(node.left, key)
+    # else search the right subtree because the right subtree contains
+    # the keys that are greater
+    else:
+      return self.__find_node(node.right, key)
+
   def count_internal(self) -> int:
     def count_internal(node: Node) -> int:
       # if the node is None, return 0
@@ -57,19 +69,7 @@ class BinarySearchTree(BinarySearchTreeADT):
     # return the sum of the left and right counts
     return left_count + right_count
 
-  def degree(self, key: Node) -> int:
-    def find_node(node: Node, key: object) -> Node:
-      if node is None or node.key == key:
-        return node
-      # if the key is less than the node's key, search the left subtree
-      # because the left subtree contains the keys that are smaller
-      if node.key > key:
-        return find_node(node.left, key)
-      # else search the right subtree because the right subtree contains
-      # the keys that are greater
-      else:
-        return find_node(node.right, key)
-
+  def degree(self, key: object) -> int:
     def degree(node: Node) -> int:
       # if the node is None, return -1
       if node is None:
@@ -87,7 +87,7 @@ class BinarySearchTree(BinarySearchTreeADT):
       return 1
 
     # first find the node with the given key
-    node = find_node(self._root, key)
+    node = self.__find_node(self._root, key)
     # then return the degree of the node using the private helper function
     return degree(node)
 
