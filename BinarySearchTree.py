@@ -13,6 +13,8 @@ class Node:
   def next(self, other_key: object) -> 'Node':
     return self.left if other_key < self.key else self.right
 
+# Grupo 3
+# Nomes: Matheus Foscarini Dias, Enzo Boadas e Mirágini Victória Silveira Malgarizi
 class BinarySearchTree(BinarySearchTreeADT):
   def __init__(self) -> None:
     self._root: Node = None
@@ -288,27 +290,3 @@ class BinarySearchTree(BinarySearchTreeADT):
         return None
 
     return ancestor(key, self._root, "")
-
-if __name__ == "__main__":
-    # creating a simple BST, usefull for testing :)
-    bst = BinarySearchTree()
-    bst.insert(10, 10)
-    bst.insert(5, 5)
-    bst.insert(15, 15)
-    bst.insert(2, 2)
-    bst.insert(7, 7)
-    bst.insert(20, 20)
-    bst.insert(19, 19)
-    bst.insert(21, 21)
-    bst.insert(18, 18)
-
-    print(bst.level(10)) # 0
-    print(bst.level(5)) # 1
-    print(bst.level(7)) # 2
-    print(bst.level(21)) # 3
-    print(bst.level(18)) # 4
-
-    print(bst.ancestor(10)) # 10
-    print(bst.ancestor(18))
-    print(bst.ancestor(7))
-    print(bst.ancestor(222))
