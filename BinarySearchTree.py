@@ -128,6 +128,35 @@ class BinarySearchTree(BinarySearchTreeADT):
 
     return level(key, self._root, 0)
 
+
+  def ancestor(self, key: object) -> str:
+    def ancestor(key: object, node: Node, path: str) -> str:
+      # if there's no node to search, return an empty string
+      # don't return the current path because the path can't lead to the key
+      if node is None:
+        return ""
+
+      new_path = path + ' ' + str(node)
+      # if the key is found, return the path
+      if node.key == key:
+        # remove spaces from the beginning and end of the string
+        # because the path starts with a space
+        return new_path.strip()
+
+      left_path = ancestor(key, node.left, new_path)
+      right_path = ancestor(key, node.right, new_path)
+
+      # if the key is found in the left subtree, return the left path
+      # both sizes can't contain the key because the key is unique
+      if left_path:
+        return left_path
+      elif right_path:
+        return right_path
+      else:
+        return None
+
+    return ancestor(key, self._root, "")
+
 if __name__ == "__main__":
     # creating a simple BST, usefull for testing :)
     bst = BinarySearchTree()
@@ -139,5 +168,15 @@ if __name__ == "__main__":
     bst.insert(20, 20)
     bst.insert(19, 19)
     bst.insert(21, 21)
+    bst.insert(18, 18)
 
-    print(bst.count_internal())
+    print(bst.level(10)) # 0
+    print(bst.level(5)) # 1
+    print(bst.level(7)) # 2
+    print(bst.level(21)) # 3
+    print(bst.level(18)) # 4
+
+    print(bst.ancestor(10)) # 10
+    print(bst.ancestor(18))
+    print(bst.ancestor(7))
+    print(bst.ancestor(222))
