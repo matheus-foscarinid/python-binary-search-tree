@@ -91,9 +91,24 @@ class BinarySearchTree(BinarySearchTreeADT):
     # then return the degree of the node using the private helper function
     return degree(node)
 
-  def height(self, key: Node) -> int: ...
-  def level(self, key: Node) -> int: ...
-  def ancestor(self, key: Node) -> str: ...
+  def height(self, key: object) -> int:
+    def height(node: Node) -> int:
+      # if the node is None, return -1
+      # it's easier because the height of a leaf is 0 and the height of None is -1
+      # so we can return -1 for None and 0 for a leaf, because -1 + 1 = 0
+      if node is None:
+        return -1
+
+      left_height = height(node.left)
+      right_height = height(node.right)
+
+      # return the maximum height of the left and right subtrees
+      return 1 + max(left_height, right_height)
+
+    # first find the node with the given key
+    node = self.__find_node(self._root, key)
+    # then return the height of the node using the private helper function
+    return height(node)
 
 if __name__ == "__main__":
     # creating a simple BST, usefull for testing :)
